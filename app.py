@@ -16,7 +16,12 @@ st.markdown("현재 날씨, 계절, 시간대, 위치와 사용자의 상황에 
 with st.sidebar:
     ip_info = get_location_by_ip()
     local_info = search_place_by_coordinates(ip_info["lon"], ip_info["lat"])
-
+    if not local_info :
+        local_info = {   
+            "lat": 37.5665,  # 위도
+            "lon": 126.978,  # 경도
+            "place_keyword": "서울"
+        }
     st.header("📝 입력 정보")
     location = st.text_input("지역 (예: 홍대, 강남) 미 입력시 현재 위치 기반 정보 제공", placeholder=local_info.get('place_keyword'), value="")  # 사용자의 지역 입력
     user_input = st.text_input("지금 기분이나 상황을 말해주세요", value="몸이 찌뿌둥 한데 뭘 하면 좋을까?")  # 자연어 입력
