@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- 스타일 정의 -->
+  <defs>
+    <style>
+      .node {
+        fill: #f0f8ff;
+        stroke: #4682b4;
+        stroke-width: 2;
+        rx: 10;
+        ry: 10;
+      }
+      .intent-node {
+        fill: #ffecb3;
+        stroke: #ff9800;
+      }
+      .context-node {
+        fill: #e1f5fe;
+        stroke: #03a9f4;
+      }
+      .recommendation-node {
+        fill: #e8f5e9;
+        stroke: #4caf50;
+      }
+      .search-node {
+        fill: #f3e5f5;
+        stroke: #9c27b0;
+      }
+      .summary-node {
+        fill: #fff3e0;
+        stroke: #ff5722;
+      }
+      .unsupported-node {
+        fill: #ffebee;
+        stroke: #f44336;
+      }
+      .node-text {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        text-anchor: middle;
+        dominant-baseline: middle;
+      }
+      .arrow {
+        stroke: #333;
+        stroke-width: 1.5;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+      .conditional-arrow {
+        stroke: #666;
+        stroke-width: 1.5;
+        stroke-dasharray: 5,3;
+        fill: none;
+        marker-end: url(#arrowhead);
+      }
+      .arrow-text {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+        fill: #555;
+      }
+      .module-box {
+        fill: none;
+        stroke: #ddd;
+        stroke-width: 1;
+        stroke-dasharray: 5,3;
+        rx: 8;
+        ry: 8;
+      }
+      .module-title {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: bold;
+        fill: #777;
+      }
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333" />
+    </marker>
+  </defs>
+
+  <!-- 배경 -->
+  <rect width="800" height="600" fill="#ffffff" />
+
+  <!-- 모듈 영역 - 의도 분류 -->
+  <rect x="50" y="50" width="700" height="80" class="module-box" />
+  <text x="70" y="70" class="module-title">의도 분류 (Intent Classification)</text>
+
+  <!-- 모듈 영역 - 상황 분석 -->
+  <rect x="50" y="140" width="700" height="110" class="module-box" />
+  <text x="70" y="160" class="module-title">상황 분석 (Context Analysis)</text>
+
+  <!-- 모듈 영역 - 추천 생성 -->
+  <rect x="50" y="260" width="700" height="80" class="module-box" />
+  <text x="70" y="280" class="module-title">추천 생성 (Recommendation)</text>
+
+  <!-- 모듈 영역 - 장소 검색 -->
+  <rect x="50" y="350" width="700" height="110" class="module-box" />
+  <text x="70" y="370" class="module-title">장소 검색 (Place Search)</text>
+
+  <!-- 모듈 영역 - 결과 요약 -->
+  <rect x="50" y="470" width="700" height="80" class="module-box" />
+  <text x="70" y="490" class="module-title">결과 요약 (Summarization)</text>
+
+  <!-- 노드 - 의도 분류 -->
+  <rect x="400" y="90" width="120" height="30" class="node intent-node" />
+  <text x="460" y="105" class="node-text">classify_intent</text>
+
+  <!-- 노드 - 시간 정보 -->
+  <rect x="250" y="180" width="100" height="30" class="node context-node" />
+  <text x="300" y="195" class="node-text">get_time_slot</text>
+
+  <!-- 노드 - 계절 정보 -->
+  <rect x="400" y="180" width="100" height="30" class="node context-node" />
+  <text x="450" y="195" class="node-text">get_season</text>
+
+  <!-- 노드 - 날씨 정보 -->
+  <rect x="550" y="180" width="100" height="30" class="node context-node" />
+  <text x="600" y="195" class="node-text">get_weather</text>
+
+  <!-- 노드 - 음식 추천 -->
+  <rect x="300" y="300" width="120" height="30" class="node recommendation-node" />
+  <text x="360" y="315" class="node-text">recommend_food</text>
+
+  <!-- 노드 - 활동 추천 -->
+  <rect x="500" y="300" width="120" height="30" class="node recommendation-node" />
+  <text x="560" y="315" class="node-text">recommend_activity</text>
+
+  <!-- 노드 - 의도 미지원 -->
+  <rect x="130" y="300" width="120" height="30" class="node unsupported-node" />
+  <text x="190" y="315" class="node-text">intent_unsupported</text>
+
+  <!-- 노드 - 검색 키워드 생성 -->
+  <rect x="250" y="390" width="150" height="30" class="node search-node" />
+  <text x="325" y="405" class="node-text">generate_search_keyword</text>
+
+  <!-- 노드 - 장소 검색 -->
+  <rect x="450" y="390" width="120" height="30" class="node search-node" />
+  <text x="510" y="405" class="node-text">search_place</text>
+
+  <!-- 노드 - 결과 요약 -->
+  <rect x="400" y="510" width="120" height="30" class="node summary-node" />
+  <text x="460" y="525" class="node-text">summarize_message</text>
+
+  <!-- 노드 - 종료 -->
+  <rect x="600" y="510" width="60" height="30" class="node" />
+  <text x="630" y="525" class="node-text">END</text>
+
+  <!-- 화살표 - 의도 분류 → 시간대 -->
+  <path d="M460,120 L300,180" class="arrow" />
+
+  <!-- 화살표 - 시간대 → 계절 -->
+  <path d="M350,195 L400,195" class="arrow" />
+
+  <!-- 화살표 - 계절 → 날씨 -->
+  <path d="M500,195 L550,195" class="arrow" />
+
+  <!-- 조건부 화살표 - 날씨 → 음식 추천 -->
+  <path d="M600,210 L360,300" class="conditional-arrow" />
+  <text x="420" y="240" class="arrow-text">intent == "food"</text>
+
+  <!-- 조건부 화살표 - 날씨 → 활동 추천 -->
+  <path d="M600,210 L560,300" class="conditional-arrow" />
+  <text x="600" y="240" class="arrow-text">intent == "activity"</text>
+
+  <!-- 조건부 화살표 - 날씨 → 의도 미지원 -->
+  <path d="M600,210 L190,300" class="conditional-arrow" />
+  <text x="300" y="260" class="arrow-text">intent == "unknown"</text>
+
+  <!-- 화살표 - 음식 추천 → 검색 키워드 생성 -->
+  <path d="M360,330 L325,390" class="arrow" />
+
+  <!-- 화살표 - 활동 추천 → 검색 키워드 생성 -->
+  <path d="M560,330 L325,390" class="arrow" />
+
+  <!-- 화살표 - 검색 키워드 생성 → 장소 검색 -->
+  <path d="M400,405 L450,405" class="arrow" />
+
+  <!-- 화살표 - 장소 검색 → 결과 요약 -->
+  <path d="M510,420 L460,510" class="arrow" />
+
+  <!-- 화살표 - 의도 미지원 → 종료 -->
+  <path d="M190,330 L190,530 L600,530" class="arrow" />
+
+  <!-- 화살표 - 결과 요약 → 종료 -->
+  <path d="M520,525 L600,525" class="arrow" />
+</svg>
