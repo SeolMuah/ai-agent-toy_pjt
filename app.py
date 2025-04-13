@@ -2,8 +2,6 @@ import streamlit as st
 from run_graph import graph
 from current_location import *
 
-ip_info = get_location_by_ip()
-local_info = search_place_by_coordinates(ip_info["lon"], ip_info["lat"])
 
 
 # Streamlit 웹 앱 페이지 설정
@@ -16,6 +14,9 @@ st.markdown("현재 날씨, 계절, 시간대, 위치와 사용자의 상황에 
 
 # --- 입력 영역: 왼쪽 사이드바에 사용자 입력 폼 구성 ---
 with st.sidebar:
+    ip_info = get_location_by_ip()
+    local_info = search_place_by_coordinates(ip_info["lon"], ip_info["lat"])
+
     st.header("📝 입력 정보")
     location = st.text_input("지역 (예: 홍대, 강남) 미 입력시 현재 위치 기반 정보 제공", placeholder=local_info['place_keyword'], value="")  # 사용자의 지역 입력
     user_input = st.text_input("지금 기분이나 상황을 말해주세요", value="몸이 찌뿌둥 한데 뭘 하면 좋을까?")  # 자연어 입력
