@@ -98,7 +98,12 @@ def search_place_by_coordinates(x, y) -> dict:
                 "place_keyword": keyword
                 }
     else:
-        return None
+        {   
+            "lat": 37.5665,  # 위도
+            "lon": 126.978,  # 경도
+            "place_keyword": "서울"
+        }
+        
 
 def search_place_by_keyword(keyword) -> dict:
     """
