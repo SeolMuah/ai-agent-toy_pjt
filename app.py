@@ -18,7 +18,7 @@ with st.sidebar:
     local_info = search_place_by_coordinates(ip_info["lon"], ip_info["lat"])
 
     st.header("📝 입력 정보")
-    location = st.text_input("지역 (예: 홍대, 강남) 미 입력시 현재 위치 기반 정보 제공", placeholder=local_info['place_keyword'], value="")  # 사용자의 지역 입력
+    location = st.text_input("지역 (예: 홍대, 강남) 미 입력시 현재 위치 기반 정보 제공", placeholder=local_info.get('place_keyword'), value="")  # 사용자의 지역 입력
     user_input = st.text_input("지금 기분이나 상황을 말해주세요", value="몸이 찌뿌둥 한데 뭘 하면 좋을까?")  # 자연어 입력
     submitted = st.button("추천 받기")  # 추천 실행 버튼
     search_radius = st.slider("검색 반경 (km)", 
